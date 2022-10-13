@@ -1,0 +1,8 @@
+define std as @import with "std";
+
+pub fn call returns void:
+    
+    create name as "Sweet";
+    print from debug from std with "Hello from {s}!" and .{ name };
+
+end call;

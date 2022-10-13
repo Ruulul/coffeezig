@@ -1,4 +1,6 @@
 const std = @import("std");
+const sweetStep = @import("sweetStep.zig");
+
 
 pub fn build(b: *std.build.Builder) void {
     // Standard target options allows the person running `zig build` to choose
@@ -16,7 +18,10 @@ pub fn build(b: *std.build.Builder) void {
     exe.setBuildMode(mode);
     exe.install();
 
+    const sweet_step = sweetStep.createFile(b, "src/main.czig");
+
     const run_cmd = exe.run();
+    run_cmd.step.dependOn(&sweet_step.step);
     run_cmd.step.dependOn(b.getInstallStep());
     if (b.args) |args| {
         run_cmd.addArgs(args);
