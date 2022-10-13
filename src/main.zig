@@ -1,4 +1,4 @@
-const sweet = @import("sweet.zig");
+const sweet = @import("sweet.czig");
 
 pub fn main() !void {
     sweet.call();
